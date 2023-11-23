@@ -15,7 +15,7 @@ public class Main {
         int a=0;
         do {    Menu.mainMenu();
             a= scanner.nextInt();
-
+switch (a)
 
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("./text.txt", true));
@@ -39,6 +39,9 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Ошибка при записи в файл");
         }
+            case 2:
+                removeBook();
+                break;
 }while (a !=5 );
 //
 //      int a=0;
