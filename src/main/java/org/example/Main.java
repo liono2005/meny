@@ -2,38 +2,53 @@ package org.example;
 
 
 import org.example.fere.AutorEntity;
-import org.example.fere.PubleherEntity;
-
-import java.awt.*;
+import java.io.FileWriter;
 import java.awt.print.Book;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner scanner=new Scanner(System.in);
-      int a=0;
-        Book book = new Book();
-
-         do {
-             Menu.mainMenu();
-             a= scanner.nextInt();
-
-             switch (a){
-                 case (1):System.out.println("1 Добавить книгу");
-                     AutorEntity autor=new AutorEntity();
-
-                    // PubleherEntity publeher=new PubleherEntity();
-                     System.out.println("Название издательство");
-
-                    // publeher.setPubleher(scanner.nextLine());
-                     break;
-                 case (2):System.out.println("2 УДАЛИТЬ");break;
-                 case (3):System.out.println("3 Поиск");break;
+        int a=0;
+        do {    Menu.mainMenu();
+            a= scanner.nextInt();
 
 
-             }
-         }while (a !=5 );
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./text.txt", true));
 
-    }
-}
+            System.out.print("Введите год издания книги: ");
+            int year = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.print("Введите издательство: ");
+            String publisher = scanner.nextLine();
+
+            System.out.print("Введите автора: ");
+            String author = scanner.nextLine();
+
+            writer.write("Год издания: " + year + ", Издательство: " + publisher + ", Автор: " + author);
+            writer.newLine();
+
+            writer.close();
+            System.out.println("Книга успешно добавлена в библиотеку");
+
+        } catch (IOException e) {
+            System.out.println("Ошибка при записи в файл");
+        }
+}while (a !=5 );
+//
+//      int a=0;
+//
+//
+//         do {
+//             Menu.mainMenu();
+//             a= scanner.nextInt();
+////             }
+//         }while (a !=5 );
+//
+//    }
+}}
